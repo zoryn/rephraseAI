@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct rephraseAIApp: App {
+
+    @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+
     var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
+        // No scenes needed — menu bar app with no main window.
+        // Settings window is managed directly by AppDelegate.
+        Settings { EmptyView() }
     }
 }
