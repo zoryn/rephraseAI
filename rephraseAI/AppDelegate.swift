@@ -9,6 +9,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private var textProcessor: TextProcessor!
     private var processingTimer: Timer?
     private var settingsWindow: NSWindow?
+    private var modesWindow: NSWindow?
 
     // MARK: - Lifecycle
 
@@ -31,6 +32,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         let menu = NSMenu()
         menu.addItem(NSMenuItem(title: "Settings...", action: #selector(openSettings), keyEquivalent: ","))
+        menu.addItem(NSMenuItem(title: "Modes...", action: #selector(openModes), keyEquivalent: "m"))
         menu.addItem(.separator())
         menu.addItem(NSMenuItem(title: "Quit rephraseAI", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
         statusItem.menu = menu
@@ -119,6 +121,27 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             window.center()
             window.makeKeyAndOrderFront(nil)
             self.settingsWindow = window
+        }
+        NSApp.activate(ignoringOtherApps: true)
+    }
+
+    // MARK: - Modes Window
+
+    @objc private func openModes() {
+        if let modesWindow {
+            modesWindow.makeKeyAndOrderFront(nil)
+        } else {
+            let window = NSWindow(
+                contentRect: NSRect(x: 0, y: 0, width: 420, height: 340),
+                styleMask: [.titled, .closable, .resizable],
+                backing: .buffered,
+                defer: false
+            )
+            window.title = "rephraseAI Modes"
+            window.contentView = NSHostingView(rootView: ModesView())
+            window.center()
+            window.makeKeyAndOrderFront(nil)
+            self.modesWindow = window
         }
         NSApp.activate(ignoringOtherApps: true)
     }

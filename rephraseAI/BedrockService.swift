@@ -28,7 +28,7 @@ struct BedrockService: LLMService {
         let body: [String: Any] = [
             "anthropic_version": "bedrock-2023-05-31",
             "max_tokens": 4096,
-            "system": settings.customPrompt,
+            "system": settings.effectivePrompt,
             "messages": [
                 ["role": "user", "content": text]
             ]

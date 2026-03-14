@@ -15,7 +15,7 @@ struct OpenAIService: LLMService {
         let body: [String: Any] = [
             "model": "gpt-4o",
             "messages": [
-                ["role": "system", "content": SettingsModel.shared.customPrompt],
+                ["role": "system", "content": SettingsModel.shared.effectivePrompt],
                 ["role": "user", "content": text]
             ]
         ]

@@ -38,15 +38,6 @@ struct GeneralTab: View {
                 }
             }
 
-            Section("Refinement Prompt") {
-                TextEditor(text: $settings.customPrompt)
-                    .frame(minHeight: 80)
-                    .font(.body)
-                Text("This prompt is sent as the system instruction to the LLM.")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-            }
-
             Section("Hotkey") {
                 LabeledContent("Trigger shortcut") {
                     Text("⌘ ⇧ Space")

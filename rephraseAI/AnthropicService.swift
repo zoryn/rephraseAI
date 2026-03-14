@@ -16,7 +16,7 @@ struct AnthropicService: LLMService {
         let body: [String: Any] = [
             "model": "claude-sonnet-4-6",
             "max_tokens": 4096,
-            "system": SettingsModel.shared.customPrompt,
+            "system": SettingsModel.shared.effectivePrompt,
             "messages": [
                 ["role": "user", "content": text]
             ]
